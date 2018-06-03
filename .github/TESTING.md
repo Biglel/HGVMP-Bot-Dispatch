@@ -12,9 +12,6 @@ running this in your terminal:
 npm test
 ```
 
-This will verify the consistency of the coding style and if Bastion boots
-successfully.
-
 ## Step 2: Manual Tests
 
 After you've done the automated tests, and fixed any issues found, you need to
