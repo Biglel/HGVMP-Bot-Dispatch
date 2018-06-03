@@ -1,0 +1,50 @@
+{
+  "name": "hgvmp-discord-bot",
+  "version": "0.1.0",
+  "description": "A multi-purpose Discord bot built on the DiscordJS library tailored for use on the HGVMP server",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "eslint **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hgvmp/dispatch.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "server",
+    "node",
+    "nodejs",
+    "discordjs"
+  ],
+  "author": "Shane Wilson <shane@synplex.co.uk> (https://synplex.co.uk)",
+  "contributors": [
+    "Ben Handsley <benhands12@gmail.com> (http://benhandsley.me)",
+    "Manu Valle <manu@estilate.com> (https://estilate.com)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hgvmp/dispatch/issues"
+  },
+  "homepage": "https://github.com/hgvmp/dispatch#readme",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "dotenv": "^4.0.0",
+    "moment": "^2.22.2",
+    "ordinal": "^1.0.2"
+  },
+  "engines": {
+    "node": "8.11.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.8.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "nodemon": "^1.17.5"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "prefix": "!",
+  "client": {
+    "id": "444288088777424896",
+    "username": "HGVMP Dispatch",
+    "role": [
+      "Discord Bot"
+    ],
+    "self": {
+      "repository": "https://github.com/hgvmp/dispatch",
+      "issues": "https://github.com/hgvmp/dispatch/issues"
+    }
+  },
+
+  "owner": {
+    "id": "359677222258212864",
+    "username": "Synplex",
+    "self": {
+      "website": "https://synplex.co.uk",
+      "discord": "https://discord.gg/T6Q6uUQ"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+## Issue Welcome Comments ##
+
+# Comment to send on a user's first issue in the repository.
+firstIssueWelcomeComment: |
+  Thank you for opening this issue. A developer will get back to you as soon as possible.
+  Since this is your first issue in this repository, please make sure you have followed the issue template provided and give us as much detail as possible.
+  
+  If this is a question and not really an issue or suggestion, then please ask it in our [Discord Server](https://discord.gg/TTG3HnK 'HGVMP') instead. You'll get redirected there anyway.
+  
+  Thank you,
+  HGVMP Team
+
+# Comment to send on the user's forthcoming issues in the repository.
+issueWelcomeComment: |
+  Thank you for opening this issue. A developer will get back to you as soon as possible.
+  Since this is your first issue in this repository, please make sure you have followed the issue template provided and give us as much detail as possible.
+  
+  If this is a question and not really an issue or suggestion, then please ask it in our [Discord Server](https://discord.gg/TTG3HnK 'HGVMP') instead. You'll get redirected there anyway.
+  
+  Thank you,
+  HGVMP Team
+
+
+## Pull Request Welcome Comments ##
+
+# Comment to send on a user's first pull request in the repository.
+firstPullRequestWelcomeComment: |
+  Thank you for opening this pull request. A developer will get back to you as soon as possible to review the changes.
+  Since this is your first pull request in this repository, please make sure have followed the issue template provided and gave us as much detail as possible.
+  
+  In the mean time, please check out our contributing guidelines to explore other ways you can get involved.
+  
+  Thank you,
+  HGVMP Team
+
+# Comment to send on the user's forthcoming pull requests in the repository.
+pullRequestWelcomeComment: |
+  Thank you for opening this pull request. A developer will get back to you as soon as possible to review the changes.
+  
+  Thank you,
+  HGVMP Team

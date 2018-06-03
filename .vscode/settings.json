@@ -1,0 +1,32 @@
+{
+  // Editor settings
+  "editor.tabSize": 2,
+  "editor.detectIndentation": true,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.rulers": [
+    80
+  ],
+  "editor.wordWrapColumn": 80,
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[php]": {
+    "editor.tabSize": 4
+  },
+  
+  // Prettier settings
+  "prettier.eslintIntegration": true,
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+
+  // ESLint settings
+  "eslint.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.run": "onType",
+  "eslint.autoFixOnSave": true
+}
