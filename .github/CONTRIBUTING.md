@@ -14,7 +14,7 @@ contributing to the project and describes what to expect at each step.
 ## Issues
 
 Issues in this repository are the primary means by which bug reports and feature
-requests/suggestions are made for the Bastion Discord Bot.
+requests/suggestions are made for the HGVMP Discord Bot.
 
 See details of [Contributing Guidelines for Issues].
 
