@@ -1,6 +1,7 @@
 module.exports = async (client) => {
   console.log(`\nBreaker breaker 1-9: ${client.user.username} is now online, 10-65`);
 
+  
   try {
     const link = await client.generateInvite(['ADMINISTRATOR']);
     console.log(`\nInvite link: ${link}`);

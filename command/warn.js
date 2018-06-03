@@ -1,55 +1,104 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
+const fs = require("fs");
+const ms = require("ms");
 
-exports.run = (client, message, args) => {
-  const reason = args.slice(1).join(' ');
+const warns = JSON.parse(fs.readFileSync("./storage/warnings.json", "utf8"));
+
+module.exports.run = async (bot, message, args) => {
+  if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("No can do pal!");
+  const wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   const user = message.mentions.users.first();
-  const log = client.channels.find('name', 'bot-development'); // TODO: Change this to moderation-log
+  if (!wUser) return message.channel.send("That user does not exist.");
+  if (wUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That user can not be warned.");
+  const reason = args.join(" ").slice(22);
 
-  if (!log) return message.reply('I can not find a moderation log channel in this server, does one exist?');
-  if (reason.length < 1) return message.reply('You must supply a reason for warning a user.');
-  if (message.mentions.users.size < 1) return message.reply('You must mention a user to warn them.').catch(console.error);
+  if (!warns[wUser.id]) warns[wUser.id] = {
+    username: user.username,
+    warns: 0
+  };
 
-  user.send(`You have been issued a warning by ${message.author} for the following reason:\n\n_${reason}_\n\nIf you have any problems with this warning, contact the team member that issued it directly.`);
+  warns[wUser.id].warns += 1;
 
-  const embed = new Discord.RichEmbed()
+  fs.writeFile("./storage/warnings.json", JSON.stringify(warns, null, 4), (err) => {
+    if (err) console.log(err)
+  });
+
+  const warnEmbed = new Discord.RichEmbed()
     .setTitle(`User has been given a warning`)
-    .setDescription(`This is an automatically generated message`)
+    .setDescription(`This is an automatically generated messaged by Aoki`)
     .setThumbnail(`${user.avatarURL}`)
     .setColor('#FFFF00')
     .setTimestamp()
     .setFooter('A copy of the reason has been sent to the user')
     .addField(
-      'User:',
-      `${user.tag}`,
-      true,
-    )
+    'User:',
+    `${user.tag} (${warns[wUser.id].warns})`,
+    true,
+  )
+  .addField(
+    'Moderator:',
+    `${message.author.tag}`,
+    true,
+  )
     .addField(
-      'Moderator:',
-      `${message.author.tag}`,
-      true,
-    )
-    .addField(
-      'Reason:',
-      `${reason}`,
-    )
+    'Reason:',
+    `${reason}`,
+  )
 
-  return client.channels.get(log.id).send({
-    embed
-  });
+  const warnchannel = message.guild.channels.find(`name`, "moderation-log");
+  if (!warnchannel) return message.channel.send("Couldn't find channel");
 
-};
+  warnchannel.send(warnEmbed);
 
+  if (warns[wUser.id].warns === 3) {
+    let muterole = message.guild.roles.find(r => r.name === "Muted");
+    if (!muterole) {
+      try {
+        muterole = await message.guild.createRole({
+          name: "Muted",
+          color: "#000000",
+          permissions: [],
+          position: 2,
+          mentionable: false
+        });
+        message.guild.channels.forEach(async (channel) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      } catch (err) {
+        console.log(err.stack);
+      }
+    }
+
+    const mutetime = "2s";
+    await (wUser.addRole(muterole)).then(message.channel.send(`<@${wUser.id}> has been temporarily muted`));
+
+    setTimeout(() => {
+      wUser.removeRole(muterole)
+      message.channel.send(`<@${wUser.id}> has been unmuted.`)
+    }, ms(mutetime))
+  }
+  if (warns[wUser.id].warns === 4) {
+    message.guild.member(wUser).kick(reason);
+    message.channel.send(`<@${wUser.id}> has been kicked.`)
+  }
+  if (warns[wUser.id].warns === 5) {
+    message.guild.member(wUser).ban(reason);
+    message.channel.send(`<@${wUser.id}> has been banned.`)
+  }
+}
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['w', 'warn'],
-  permLevel: 2
+  aliases: ['warn'],
+  permlvl: 2
 };
-
 
 exports.help = {
   name: 'warn',
-  description: 'Issues a warning to the mentioned user.',
-  usage: '!warn [@user] [reason]',
+  description: 'Gives a troublesome user a warning.',
+  usage: 'warn [@user] [reason]'
 };

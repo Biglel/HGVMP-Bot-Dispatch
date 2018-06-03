@@ -27,6 +27,5 @@
   // ESLint settings
   "eslint.enable": true,
   "eslint.alwaysShowStatus": true,
-  "eslint.run": "onType",
-  "eslint.autoFixOnSave": true
+  "eslint.run": "onType"
 }

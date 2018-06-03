@@ -4,12 +4,12 @@ const ordinal = require('ordinal');
 module.exports = (member) => {
   console.log(`${member.user.username} has joined the server!`);
 
-  const {guild} = member.guild;
+  const guild = member.guild;
   let count = guild.memberCount;
   count += 1;
   const ordinalCount = ordinal(count);
 
-  const welcomeChannel = member.guild.channels.find('name', 'bot-development');
+  const welcomeChannel = member.guild.channels.find('name', 'moderation-log');
   const rulesChannel = member.guild.channels.find('name', 'welcome-to-hgvmp-team');
   
   const embed = new Discord.RichEmbed()

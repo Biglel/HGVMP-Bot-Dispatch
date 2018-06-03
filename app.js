@@ -32,7 +32,7 @@ fs.readdir('./command/', (err, files) => {
 client.elevation = (message) => {
   let permlvl = 0;
   
-  const modRole = message.guild.roles.find('name', 'Moderator');
+  const modRole = message.guild.roles.find('name', 'Discord Moderator');
   if (modRole && message.member.roles.has(modRole.id)){
     permlvl = 2;
   };
