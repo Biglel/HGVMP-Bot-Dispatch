@@ -13,7 +13,7 @@ const config = require('../config/application.json');
 // We need to call this file for the experience system to work properly
 const experience = require('../storage/experience.json');
 
-module.exports = async (message) => {
+module.exports = async message => {
   const {client} = message;
 
   // If the author of the message is the bot, would you kindly ignore it
