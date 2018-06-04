@@ -30,11 +30,14 @@
   },
   "homepage": "https://github.com/hgvmp/dispatch#readme",
   "dependencies": {
+    "dateformat": "^3.0.3",
     "discord.js": "^11.2.1",
     "dotenv": "^4.0.0",
     "moment": "^2.22.2",
     "ms": "^2.1.1",
-    "ordinal": "^1.0.2"
+    "ordinal": "^1.0.2",
+    "profanities": "^2.6.0",
+    "time-ago": "^0.2.1"
   },
   "engines": {
     "node": "8.11.2"
