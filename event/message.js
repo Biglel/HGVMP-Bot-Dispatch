@@ -9,7 +9,7 @@ const config = require('../config/application.json');
 const experience = require('../storage/experience.json');
 
 module.exports = async message => {
-  const client = message;
+  const {client} = message;
 
   // If the author of the message is the bot, would you kindly ignore it
   if (message.author.bot) return;
