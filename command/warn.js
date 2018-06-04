@@ -95,7 +95,7 @@ module.exports.run = async (bot, message, args) => {
     }
 
     // Set the timer for which the user will be muted for
-    const mutetime = '5s';
+    const mutetime = '30m';
 
     // Add the mentioned user to the muted role, then notify the channel
     await wUser
