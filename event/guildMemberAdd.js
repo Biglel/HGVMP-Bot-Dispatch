@@ -6,7 +6,7 @@ module.exports = (member) => {
   console.log(`${member.user.username} has joined the server!`);
 
   // Store member.guild as guild to prevent long statements
-  const guild = member.guild;
+  const {guild} = member.guild;
   // Take the current number of users from the guild
   let count = guild.memberCount;
   // Increase the count by 1
