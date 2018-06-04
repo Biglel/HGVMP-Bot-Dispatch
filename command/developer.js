@@ -1,10 +1,29 @@
 const Discord = require('discord.js');
-const config = require('../config/application.json');
-const packageJSON = require('../package.json');
+const config = require('../config/application.json'); // We need to call this file for our configuration
+const packageJSON = require('../package.json'); // We need to call this file for the engine and library information
 
+// Get the Discord.JS version, remove the ^ using slice
 const discordVers = packageJSON.dependencies["discord.js"].slice(1);
 
 exports.run = (client, message) => {
+
+  // Set the channel we want to use as the bot channel
+  const botChannel = message.guild.channels.find('id', '383850372768202753');
+
+  // If the message is sent to the wrong channel
+  if (message.channel.id !== '383850372768202753') {
+    // Delete the message
+    message.delete();
+    // Inform the user that they must use the correct channel
+    return message.channel.send(
+      `Whoops, it looks like you're not in the ${botChannel} channel`
+    ).then(msg => {
+      // Delete the bots message after 5 seconds
+      msg.delete(5000);
+    });
+  }
+
+    // Create the embed to show the developer information  
   const embed = new Discord.RichEmbed()
     .setAuthor(
       `HGVMP Dispatch - Developer Tools`
@@ -39,11 +58,13 @@ exports.run = (client, message) => {
       `Discord.JS ${discordVers}`,
       true,
     )
-    .setFooter(`I am serving ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds`);
+    .setFooter(`I am serving ${client.guilds.map(g => g.memberCount)} users, in ${client.channels.size} channels of ${client.guilds.size} guilds`);
+  
+  // Send the embed to the channel    
   message.channel.send(embed);
 };
 
-
+// Set the configuration of the command
 exports.conf = {
   enabled: true,
   guildOnly: false,
@@ -51,7 +72,7 @@ exports.conf = {
   permlvl: 0
 };
 
-
+// Set data for the help command
 exports.help = {
   name: 'developer',
   description: 'Creates an embed with useful information for the bot',

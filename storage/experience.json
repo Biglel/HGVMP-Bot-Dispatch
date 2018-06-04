@@ -1,22 +1,42 @@
 {
     "359677222258212864": {
-        "experience": 806,
-        "level": 3
+        "username": "Synplex",
+        "experience": 1133,
+        "level": 4
     },
-    "212271922099126282": {
-        "experience": 717,
-        "level": 3
-    },
-    "178550841794363394": {
-        "experience": 332,
+    "308309687827431424": {
+        "username": "GunPowder",
+        "experience": 459,
         "level": 2
     },
-    "360119321545932801": {
-        "experience": 2272,
-        "level": 8
+    "212271922099126282": {
+        "username": "The Josh",
+        "experience": 257,
+        "level": 1
+    },
+    "195208719510798336": {
+        "username": "⌊ 𝓝𝓲𝓷𝓳𝓪.𝓔𝔁𝒆 ⌉ ❉¯\\_( ゜-゜ )_/¯❉",
+        "experience": 408,
+        "level": 2
+    },
+    "275238553548750848": {
+        "username": "The Josh  - Tester",
+        "experience": 95,
+        "level": 1
     },
     "163353165767507968": {
-        "experience": 148,
+        "username": "Inclusive",
+        "experience": 33,
+        "level": 1
+    },
+    "178550841794363394": {
+        "username": "Jósh447",
+        "experience": 20,
+        "level": 1
+    },
+    "360119321545932801": {
+        "username": "Nadz",
+        "experience": 102,
         "level": 1
     }
 }

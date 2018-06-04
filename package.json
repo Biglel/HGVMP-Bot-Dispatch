@@ -37,6 +37,7 @@
     "ms": "^2.1.1",
     "ordinal": "^1.0.2",
     "profanities": "^2.6.0",
+    "strikethrough": "^0.1.0",
     "time-ago": "^0.2.1"
   },
   "engines": {

@@ -1,3 +1,8 @@
+// If you live and die by the D.R.Y rule... Turn back now. I've repeated myself too many times here for an excuse, but I'll make one anyway! I'm tired and wanted the level up stuff sorted based on the language channel the user was in.
+
+// TODO: Streamline the process in a future update.
+
+
 const Discord = require('discord.js');
 const fs = require('fs'); // We need to require fs, it is packaged with NodeJS so no need to download anything extra
 const profanities = require('profanities'); // We need to require all of our packages after we install them
@@ -70,6 +75,7 @@ module.exports = async message => {
   // If a user doesn't already exist, create an entry
   if (!experience[message.author.id]) {
     experience[message.author.id] = {
+      username: message.author.username,
       experience: 0,
       level: 1
     };
@@ -85,22 +91,123 @@ module.exports = async message => {
   // Take their current experience, and add on any experience gained
   experience[message.author.id].experience = currExperience + gainExperience;
 
-  // If their level is equal to or higher than their current
-  if (nextLevel <= experience[message.author.id].experience) {
-    // Increase the level by 1
-    experience[message.author.id].level = currLevel + 1;
+  // If the channel is the Spanish community
+  if (message.channel.id === '397778495591153686') {
+    // If their level is equal to or higher than their current
+    if (nextLevel <= experience[message.author.id].experience) {
+      // Increase the level by 1
+      experience[message.author.id].level = currLevel + 1;
 
-    // Create the embed to show they levelled up their account
-    const levelUp = new Discord.RichEmbed()
-      .setTitle(`Level up!`)
-      .setColor('#ffd700')
-      .setTimestamp()
-      .addField('New level: ', currLevel + 1);
+      // Create the embed to show they levelled up their account
+      const levelUp = new Discord.RichEmbed()
+        .setTitle(`Has subido de nivel!`)
+        .setColor('#ffd700')
+        .setTimestamp()
+        .addField('Siguiente nivel: ', currLevel + 1);
 
-    // Send the embed to the channel, then remove it after 5 seconds
-    message.channel.send(levelUp).then(msg => {
-      msg.delete(5000);
-    });
+      // Send the embed to the channel, then remove it after 5 seconds
+      message.channel.send(levelUp).then(msg => {
+        msg.delete(5000);
+      });
+    }
+  } else if
+  // If the channel is the Polish community  
+  (message.channel.id === '397778541443284994') {
+    // If their level is equal to or higher than their current
+    if (nextLevel <= experience[message.author.id].experience) {
+      // Increase the level by 1
+      experience[message.author.id].level = currLevel + 1;
+
+      // Create the embed to show they levelled up their account
+      const levelUp = new Discord.RichEmbed()
+        .setTitle(`Zyskałeś poziom!`)
+        .setColor('#ffd700')
+        .setTimestamp()
+        .addField('Następny poziom: ', currLevel + 1);
+
+      // Send the embed to the channel, then remove it after 5 seconds
+      message.channel.send(levelUp).then(msg => {
+        msg.delete(5000);
+      });
+    }
+  } else
+  // If the channel is the French community  
+  if (message.channel.id === '397778927957049357') {
+    // If their level is equal to or higher than their current
+    if (nextLevel <= experience[message.author.id].experience) {
+      // Increase the level by 1
+      experience[message.author.id].level = currLevel + 1;
+
+      // Create the embed to show they levelled up their account
+      const levelUp = new Discord.RichEmbed()
+        .setTitle(`Vous avez gagné un niveau!`)
+        .setColor('#ffd700')
+        .setTimestamp()
+        .addField('Niveau suivant: ', currLevel + 1);
+
+      // Send the embed to the channel, then remove it after 5 seconds
+      message.channel.send(levelUp).then(msg => {
+        msg.delete(5000);
+      });
+    }
+  } else
+  // If the channel is the Netherlands community
+  if (message.channel.id === '410578603647172618') {
+    // If their level is equal to or higher than their current
+    if (nextLevel <= experience[message.author.id].experience) {
+      // Increase the level by 1
+      experience[message.author.id].level = currLevel + 1;
+
+      // Create the embed to show they levelled up their account
+      const levelUp = new Discord.RichEmbed()
+        .setTitle(`Je hebt een niveau bereikt!`)
+        .setColor('#ffd700')
+        .setTimestamp()
+        .addField('Volgende niveau: ', currLevel + 1);
+
+      // Send the embed to the channel, then remove it after 5 seconds
+      message.channel.send(levelUp).then(msg => {
+        msg.delete(5000);
+      });
+    }
+  } else
+  // If the channel is the German community
+  if (message.channel.id === '410578639856467968') {
+    // If their level is equal to or higher than their current
+    if (nextLevel <= experience[message.author.id].experience) {
+      // Increase the level by 1
+      experience[message.author.id].level = currLevel + 1;
+
+      // Create the embed to show they levelled up their account
+      const levelUp = new Discord.RichEmbed()
+        .setTitle(`Du hast ein Level erreicht!`)
+        .setColor('#ffd700')
+        .setTimestamp()
+        .addField('Nächste Ebene: ', currLevel + 1);
+
+      // Send the embed to the channel, then remove it after 5 seconds
+      message.channel.send(levelUp).then(msg => {
+        msg.delete(5000);
+      });
+    }
+  } else {
+    // If their level is equal to or higher than their current
+    if (nextLevel <= experience[message.author.id].experience) {
+      // Increase the level by 1
+      experience[message.author.id].level = currLevel + 1;
+
+      // Create the embed to show they levelled up their account
+      const levelUp = new Discord.RichEmbed()
+        .setTitle(`You have gained a level!`)
+        .setColor('#ffd700')
+        .setTimestamp()
+        .addField('Next level: ', currLevel + 1);
+
+      // Send the embed to the channel, then remove it after 5 seconds
+      message.channel.send(levelUp).then(msg => {
+        msg.delete(5000);
+      });
+    }
   }
 
   // Write the changes to our experience file
