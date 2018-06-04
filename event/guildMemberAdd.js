@@ -1,24 +1,31 @@
 const Discord = require('discord.js');
-const ordinal = require('ordinal');
+const ordinal = require('ordinal'); // We need to require all of our packages after we install them
 
 module.exports = (member) => {
+  // Log to the console when a new user joins the guild
   console.log(`${member.user.username} has joined the server!`);
 
+  // Store member.guild as guild to prevent long statements
   const guild = member.guild;
+  // Take the current number of users from the guild
   let count = guild.memberCount;
+  // Increase the count by 1
   count += 1;
   const ordinalCount = ordinal(count);
 
-  const welcomeChannel = member.guild.channels.find('name', 'moderation-log');
-  const rulesChannel = member.guild.channels.find('name', 'welcome-to-hgvmp-team');
+  // Set the channel we want to use as the greeting channel
+  const welcomeChannel = member.guild.channels.find('name', 'welcome');
+  // Set the channel we want to use as the rules channel
+  const rulesChannel = member.guild.channels.find('name', 'rules');
+  // Set the channel we want to use as the questions channel  
+  const questionsChannel = member.guild.channels.find('name', 'questions');
   
+  // Create the embed to show a new user has joined the guild
   const embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setTitle('New Member!')
     .setDescription(
-      `Welcome ${member.user.username}, to the ${
-        member.guild.name
-      } Discord server! Please make sure you read ${rulesChannel} before posting, and enjoy your stay!`,
+      `Welcome ${member.user.username}, to the ${member.guild.name} Discord server! Please make sure you read ${rulesChannel} before posting, if you have any questions be sure to check out ${questionsChannel}. Enjoy your stay `,
     )
     .setThumbnail(
       member.user.avatarURL ||
@@ -28,9 +35,9 @@ module.exports = (member) => {
       `You are the ${ordinalCount} member`
     )
     .setTimestamp()
-  welcomeChannel.send({
-    embed
-  }).then((message) => {
+  
+  // Send the embed to the channel, then react to welcome them
+  welcomeChannel.send({embed}).then((message) => {
     message.react("👋")
   });
 };
