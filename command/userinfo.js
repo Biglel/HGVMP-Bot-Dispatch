@@ -67,7 +67,7 @@ exports.run = async (bot, message) => {
     )
     .addField(
       "Joined Server",
-      `${dateformat(member.joinedAt, "dd mmmm yyyy hh:mm", true)}\n${ta.ago(
+      `${member.joinedTimestamp}\n${ta.ago(
         member.joinedAt,
       )}`,
       true,
