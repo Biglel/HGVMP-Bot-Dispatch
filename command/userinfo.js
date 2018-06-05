@@ -4,6 +4,20 @@ const dateformat = require("dateformat"); // We need to require all of our packa
 const experience = require('../storage/experience.json'); // We need to require our experience file for the information stored
 
 exports.run = async (bot, message) => {
+  
+  // REMOVE IF BROKEN
+  function formatTime(date, full) {
+    let time = '';
+    time += date.getDate() < 10 ? `0${date.getDate()}-` : `${date.getDate()}-`;
+    const month = date.getMonth() + 1;
+    time += month < 10 ? `0${month}-` : `${month}-`;
+    time += `${date.getFullYear()}`;
+    if (!full) return time;
+    time += date.getHours() < 10 ? ` 0${date.getHours()}:` : ` ${date.getHours()}:`;
+    time += date.getMinutes() < 10 ? `0${date.getMinutes()}:` : `${date.getMinutes()}:`;
+    time += date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
+    return time;
+  }
 
   // Set the channel we want to use as the bot channel
   const botChannel = message.guild.channels.find('id', '383850372768202753');
@@ -66,11 +80,7 @@ exports.run = async (bot, message) => {
       true,
     )
     .addField(
-      "Joined Server",
-      `${dateformat(member.joinedAt, "dd mmmm yyyy hh:mm", true)}\n${ta.ago(
-        member.joinedAt,
-      )}`,
-      true,
+      'Join date', formatTime(message.author.joinedAt, true)
     )
     .addField(
       "Role(s)",
