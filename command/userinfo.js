@@ -4,11 +4,6 @@ const dateformat = require("dateformat"); // We need to require all of our packa
 const experience = require('../storage/experience.json'); // We need to require our experience file for the information stored
 
 exports.run = async (bot, message) => {
-  
-  // Remove
-  var timestampFromSnowflake = (id) => {
-    return (id / 4194304) + 1420070400000;
-  };
 
   // Set the channel we want to use as the bot channel
   const botChannel = message.guild.channels.find('id', '383850372768202753');
@@ -72,7 +67,9 @@ exports.run = async (bot, message) => {
     )
     .addField(
       "Joined Server",
-      `${timestampFromSnowflake}`,
+      `${dateformat(member.joinedAt, "dd mmmm yyyy hh:mm", true)}\n${ta.ago(
+        member.joinedAt,
+      )}`,
       true,
     )
     .addField(
