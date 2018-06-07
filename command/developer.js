@@ -11,7 +11,7 @@ exports.run = (client, message) => {
   const botChannel = message.guild.channels.find('id', '383850372768202753');
 
   // If the message is sent to the wrong channel
-  if (message.channel.id !== '383850372768202753') {
+  if (message.channel.name !== 'bot-testing-area') {
     // Delete the message
     message.delete();
     // Inform the user that they must use the correct channel
@@ -29,7 +29,7 @@ exports.run = (client, message) => {
       `HGVMP Dispatch - Developer Tools`
     )
     .setDescription(`Profile for ${client.user.username}, a multi-purpose Discord bot built on the Discord.JS library tailored for use on the HGVMP server. For any feature requests or bugs/issues, please follow the links below`)
-    // .setThumbnail(`${client.user.avatarURL}`)
+    .setThumbnail('https://raw.githubusercontent.com/hgvmp/branding/master/facebook/Facebook%20logo%20white%20on%20blue.png')
     .setColor('#5599ff')
     .setTimestamp()
     .addField(
