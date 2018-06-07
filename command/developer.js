@@ -11,7 +11,7 @@ exports.run = (client, message) => {
   const botChannel = message.guild.channels.find('id', '383850372768202753');
 
   // If the message is sent to the wrong channel
-  if (message.channel.name !== 'bot-testing-area') {
+  if (message.channel.id !== '383850372768202753') {
     // Delete the message
     message.delete();
     // Inform the user that they must use the correct channel
