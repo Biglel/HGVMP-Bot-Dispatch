@@ -5,10 +5,8 @@ module.exports = (member) => {
   // Log to the console when a new user joins the guild
   console.log(`${member.user.username} has joined the server!`);
 
-  // Store member.guild as guild to prevent long statements
-  const {guild} = member.guild;
   // Take the current number of users from the guild
-  let count = guild.memberCount;
+  let count = member.guild.memberCount;
   // Increase the count by 1
   count += 1;
   const ordinalCount = ordinal(count);
