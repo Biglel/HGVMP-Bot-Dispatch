@@ -61,9 +61,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# Storage directory
+storage/
 
 # End of https://www.gitignore.io/api/node
-
-
-# Ignore our files for user content so we don't overwrite their levels
-storage/*.json
