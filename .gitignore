@@ -66,4 +66,4 @@ typings/
 
 
 # Ignore our files for user content so we don't overwrite their levels
-storage/
+storage/*.json
