@@ -31,7 +31,7 @@ exports.run = async (client, message) => {
         mentionable: false // Whether the role can be mentioned
       });
     } catch (err) {
-      // If there are any problems whilst trying to mute the user, log an error
+      // If there are any problems whilst trying to create the role, log an error
       console.log(err.stack);
     }
   }
