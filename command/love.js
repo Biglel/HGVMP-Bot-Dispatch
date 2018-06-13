@@ -25,9 +25,9 @@ exports.run = (client, message) => {
   const user = message.mentions.users.first();
 
   // Set the minimum on the scale to 0
-  min = Math.ceil(0);
+  const min = Math.ceil(0);
   // Set the maximum on the scale to 100
-  max = Math.floor(100);
+  const max = Math.floor(100);
 
   //
   const amount = Math.floor(Math.random() * (max - min)) + min;
@@ -61,7 +61,7 @@ exports.run = (client, message) => {
     // If the result is more than or equal to 75, but less than or equal to 89
   } else if (amount >= 75 && amount <= 89) {
     // Now we're talking! This looks promising, well done
-    message.channel.send('Ooh, look at you two' + ' ( ͡° ͜ʖ ͡°)');
+    message.channel.send(`Ooh, look at you two ${'(͡° ͜ʖ ͡°)'}`);
     // If the result is more than or equal to 90
   } else if (amount >= 90) {
     // Oh wow, success! Look at us, making magic happen
