@@ -66,7 +66,7 @@ exports.run = (client, message) => {
   } else if (amount >= 90) {
     // Oh wow, success! Look at us, making magic happen
     message.channel.send(
-      "So, when' the wedding? :bride_with_veil::skin-tone-1: :bouquet:"
+      "So, when's the wedding? :bride_with_veil::skin-tone-1: :bouquet:"
     );
   }
 };
