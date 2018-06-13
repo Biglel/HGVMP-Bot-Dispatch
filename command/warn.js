@@ -18,6 +18,9 @@ module.exports.run = async (bot, message, args) => {
   // Get the first mention from the message (used for the embed)
   const user = message.mentions.users.first();
 
+  // If the user tries to warn the bot, prevent it from happening
+  if (wUser.id === '456213019286831114')
+    return message.channel.send("I can't warn myself, silly!")
   // If the mentioned user does not exist, notify the command user
   if (!wUser) return message.channel.send('That user does not exist.');
   // If the mentioned user has the ability to manage messages, they can not be sanctioned
@@ -25,10 +28,12 @@ module.exports.run = async (bot, message, args) => {
     return message.channel.send('That user can not be warned.');
   // Take everyhing after the mentioned user, and join it
   const reason = args.join(' ').slice(22);
-  if (!reason){
-    message.channel.send('[ERROR] You must supply a reason when warning a user');
+  if (!reason) {
+    message.channel.send(
+      '[ERROR] You must supply a reason when warning a user'
+    );
     return;
-  }  
+  }
 
   // Create a template for our stored warnings if a value does not already exist
   if (!warns[wUser.id])
