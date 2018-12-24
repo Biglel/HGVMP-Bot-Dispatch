@@ -39,7 +39,7 @@ module.exports = (member) => {
     message.react("👋")
   // Set the role for new member
     bot.on('guildMemberAdd', member => {
-      var role = member.guild.roles.find('name', 'Member');
+      var role = member.guild.roles.get("526746097209573397");
       member.addRole(role)
     })
   });
