@@ -37,5 +37,10 @@ module.exports = (member) => {
   // Send the embed to the channel, then react to welcome them
   welcomeChannel.send({embed}).then((message) => {
     message.react("👋")
+  // Set the role for new member
+    bot.on('guildMemberAdd', member => {
+      var role = member.guild.roles.find('name', 'Member');
+      member.addRole(role)
+    })
   });
 };
